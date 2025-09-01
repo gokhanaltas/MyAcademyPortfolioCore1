@@ -1,0 +1,97 @@
+﻿@model List<Skill>
+@{
+    ViewData["Title"] = "Yeteneklerim";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<style>
+    /* Sil Butonu - Premium Kırmızı Gradient + Hover */
+    .btn-premium-danger {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        }
+
+    /* Güncelle Butonu - Premium Mavi Gradient + Hover */
+    .btn-premium-info {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+    /* Yeni Yetenek Butonu */
+    .btn-new-skill {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-new-skill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #185a9d, #43cea2);
+        }
+</style>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Seviye</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+
+        var color = item.Percentage switch
+        {
+            >= 90 => "linear-gradient(90deg, #00c6ff, #0072ff)",
+            >= 75 => "linear-gradient(90deg, #f7971e, #ffd200)",
+            >= 50 => "linear-gradient(90deg, #ff5f6d, #ffc371)",
+            >= 25 => "linear-gradient(90deg, #7b4397, #dc2430)",
+            _ => "linear-gradient(90deg, #cccccc, #999999)"
+        };
+
+        <tr>
+            <th>@count</th>
+            <td>@item.Title</td>
+            <td>
+                @item.Percentage %
+                <div class="progress" style="height: 6px; margin-top: 5px;">
+                    <div class="progress-bar" role="progressbar"
+                         style="width: @item.Percentage%; background:@color;"
+                         aria-valuenow="@item.Percentage" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <a href="/Skill/DeleteSkill/@item.SkillId" class="btn btn-premium-danger mb-1">Sil</a>
+                <a href="/Skill/UpdateSkill/@item.SkillId" class="btn btn-premium-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<a href="/Skill/CreateSkill/" class="btn btn-new-skill mt-3">Yeni Yetenek Oluştur</a>

@@ -1,0 +1,43 @@
+﻿@using System.Linq
+@model List<Portfolio.Web.Entities.Education>
+
+<section id="resume" class="resume section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Eğitim</h2>
+        <p></p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+        <div class="row">
+            @if (Model != null && Model.Any())
+            {
+                int count = 0;
+                foreach (var item in Model)
+                {
+                    <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="@((count % 2) * 100)">
+                        <h3 class="resume-title">Education</h3>
+                        <div class="resume-item">
+                            <h4>@item.SchoolName</h4>
+                            <h5>@item.StartYear - @(string.IsNullOrEmpty(item.EndYear) ? "Devam Ediyor" : item.EndYear)</h5>
+                            <p><em>@item.Department</em></p>
+                            @if (!string.IsNullOrEmpty(item.Description))
+                            {
+                                <p>@item.Description</p>
+                            }
+                        </div>
+                    </div>
+                    count++;
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <p>Henüz eğitim bilgisi eklenmemiş.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>

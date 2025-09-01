@@ -1,0 +1,131 @@
+﻿@{
+    ViewData["Title"] = "İstatistikler";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="row">
+    @{
+        var statistics = new[]
+        {
+        new { Title="Proje Sayısı", Value=ViewBag.projectCount, Icon="fa-project-diagram", Color="bg-gradient-purple" },
+        new { Title="Yetenek Ortalaması", Value=ViewBag.skillAverage, Icon="fa-lightbulb", Color="bg-gradient-indigo" },
+        new { Title="Okunmamış Mesaj Sayısı", Value=ViewBag.unreadMessageCount, Icon="fa-envelope", Color="bg-gradient-cyan" },
+        new { Title="Son Mesaj Gönderen", Value=ViewBag.lastMessageOwner, Icon="fa-user", Color="bg-gradient-teal" },
+        new { Title="Deneyim Yılı", Value=ViewBag.experienceYear, Icon="fa-suitcase", Color="bg-gradient-primary" },
+        new { Title="Çalıştığım Şirketler", Value=ViewBag.companyCount, Icon="fa-building", Color="bg-gradient-info" },
+        new { Title="Değerlendirme Ortalaması", Value=ViewBag.reviewAverage, Icon="fa-star", Color="bg-gradient-warning" },
+        new { Title="En Yüksek Değerlendirme Yapan", Value=ViewBag.maxReviewOwner, Icon="fa-user-tie", Color="bg-gradient-danger" },
+        new { Title="Toplam Mesaj Sayısı", Value=ViewBag.totalMessageCount, Icon="fa-facebook-messenger", Color="bg-gradient-pink" },
+        new { Title="Okunmuş Mesaj Sayısı", Value=ViewBag.readMessageCount, Icon="fa-envelope-open", Color="bg-gradient-orange" },
+        new { Title="Toplam Yetenek Sayısı", Value=ViewBag.skillCount, Icon="fa-tasks", Color="bg-gradient-lime" },
+        new { Title="Tamamlanan Proje Sayısı", Value=ViewBag.projectCompletedCount, Icon="fa-project-diagram", Color="bg-gradient-gold" },
+
+        // Yeni 4 istatistik
+        new { Title="Yeni Proje Sayısı", Value=ViewBag.newProjectCount, Icon="fa-plus-circle", Color="bg-gradient-maroon" },
+        new {
+        Title = "Tamamlanmamış Proje Sayısı",
+        Value = ViewBag.notCompletedProjectCount,
+        Icon = "fa-times-circle",
+        Color = "bg-premium-gray"
+        },
+
+        new { Title="En Yüksek Yetenek", Value=ViewBag.maxSkillPercentage, Icon="fa-arrow-up", Color="bg-gradient-olive" },
+        new { Title="En Düşük Yetenek", Value=ViewBag.minSkillPercentage, Icon="fa-arrow-down", Color="bg-gradient-fuchsia" }
+        };
+    }
+
+    @foreach (var stat in statistics)
+    {
+        <div class="col-md-6 col-xl-3 mb-3">
+            <div class="card @stat.Color text-white shadow-lg hover-card">
+                <div class="card-body text-center">
+                    <i class="fa @stat.Icon fa-2x mb-2"></i>
+                    <h6 class="mb-2">@stat.Title</h6>
+                    <h4 class="mb-0">@stat.Value</h4>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    /* Gradient renkler */
+    .bg-gradient-purple {
+        background: linear-gradient(135deg, #6f42c1, #8e44ad);
+    }
+
+    .bg-gradient-indigo {
+        background: linear-gradient(135deg, #6610f2, #5a189a);
+    }
+
+    .bg-gradient-cyan {
+        background: linear-gradient(135deg, #17a2b8, #138496);
+    }
+
+    .bg-gradient-teal {
+        background: linear-gradient(135deg, #20c997, #218838);
+    }
+
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #007bff, #0069d9);
+    }
+
+    .bg-gradient-info {
+        background: linear-gradient(135deg, #17a2b8, #138496);
+    }
+
+    .bg-gradient-warning {
+        background: linear-gradient(135deg, #ffc107, #e0a800);
+        color: black !important;
+    }
+
+    .bg-gradient-danger {
+        background: linear-gradient(135deg, #dc3545, #c82333);
+    }
+
+    .bg-gradient-pink {
+        background: linear-gradient(135deg, #e83e8c, #d63384);
+    }
+
+    .bg-gradient-orange {
+        background: linear-gradient(135deg, #fd7e14, #e8590c);
+    }
+
+    .bg-gradient-lime {
+        background: linear-gradient(135deg, #cddc39, #afb42b);
+        color: black !important;
+    }
+
+    .bg-gradient-gold {
+        background: linear-gradient(135deg, #ffd700, #e6c200);
+        color: black !important;
+    }
+
+    .bg-gradient-maroon {
+        background: linear-gradient(135deg, #800000, #a52a2a);
+    }
+
+    .bg-gradient-navy {
+        background: linear-gradient(135deg, #000080, #0000cd);
+    }
+
+    .bg-gradient-olive {
+        background: linear-gradient(135deg, #556b2f, #6b8e23);
+        color: black !important;
+    }
+
+    .bg-gradient-fuchsia {
+        background: linear-gradient(135deg, #ff00ff, #c71585);
+    }
+
+    .bg-premium-gray {
+        background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
+        color: #fff;
+    }
+
+    /* Hover efekti */
+    .hover-card:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+    }
+</style>

@@ -1,0 +1,60 @@
+﻿<section id="stats" class="stats section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>İstatistikler</h2>
+        <p></p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+            <!-- Yetenekler -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100 bg-primary text-white p-4 rounded shadow">
+                    <i class="bi bi-lightning-fill fs-2 mb-2"></i> <!-- Icon -->
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="@Model.SkillCount"
+                          data-purecounter-duration="1"
+                          class="purecounter fs-3 fw-bold"></span>
+                    <p>Yetenekler</p>
+                </div>
+            </div>
+
+            <!-- Deneyimler -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100 bg-success text-white p-4 rounded shadow">
+                    <i class="bi bi-briefcase-fill fs-2 mb-2"></i>
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="@Model.ExperienceCount"
+                          data-purecounter-duration="1"
+                          class="purecounter fs-3 fw-bold"></span>
+                    <p>Deneyimler</p>
+                </div>
+            </div>
+
+            <!-- Projeler -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100 bg-warning text-white p-4 rounded shadow">
+                    <i class="bi bi-kanban-fill fs-2 mb-2"></i>
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="@Model.ProjectCount"
+                          data-purecounter-duration="1"
+                          class="purecounter fs-3 fw-bold"></span>
+                    <p>Projeler</p>
+                </div>
+            </div>
+
+            <!-- Mesajlar -->
+            <div class="col-lg-3 col-md-6">
+                <div class="stats-item text-center w-100 h-100 bg-danger text-white p-4 rounded shadow">
+                    <i class="bi bi-envelope-fill fs-2 mb-2"></i>
+                    <span data-purecounter-start="0"
+                          data-purecounter-end="@Model.MessageCount"
+                          data-purecounter-duration="1"
+                          class="purecounter fs-3 fw-bold"></span>
+                    <p>Mesajlar</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

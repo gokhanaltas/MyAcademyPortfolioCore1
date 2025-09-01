@@ -1,0 +1,57 @@
+﻿@model List<ContactInfo>    
+@*
+   Default Contact Component View
+*@
+<section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>İletişim</h2>
+        <p>Benimle aşağıdaki bilgileri kullanarak iletişim kurabilirsiniz</p>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+            @foreach (var item in Model)
+            {
+               
+
+            <div class="col-lg-5">
+
+                <div class="info-wrap">
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                        <i class="bi bi-geo-alt flex-shrink-0"></i>
+                        <div>
+                            <h3>Adres</h3>
+                            <p>@item.Address</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                        <i class="bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>@item.PhoneNumber</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                        <i class="bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Mail</h3>
+                            <p>@item.Email</p>
+                        </div>
+                    </div><!-- End Info Item -->
+
+                    <iframe src="@item.MapUrl" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
+            @await Component.InvokeAsync("_DefaultSendMessageComponent") 
+            }
+        </div>
+        
+    </div>
+
+</section><!-- /Contact Section -->

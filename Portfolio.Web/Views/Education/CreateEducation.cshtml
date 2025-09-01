@@ -1,0 +1,36 @@
+﻿@model Education
+@{
+    ViewData["Title"] = "Okul Bilgisi Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post">
+
+    <div class="form-group">
+        <label>Okul Adı</label>
+        <input type="text" class="form-control" asp-for="SchoolName" />
+    </div>
+
+    <div class="form-group">
+        <label>Bölüm</label>
+        <input type="text" class="form-control" asp-for="Department" />
+    </div>
+
+    <div class="form-group">
+        <label>Başlama Yılı</label>
+        <input type="text" class="form-control" asp-for="StartYear" />
+    </div>
+
+    <div class="form-group">
+        <label>Bitiş Yılı</label>
+        <input type="text" class="form-control" asp-for="EndYear" />
+    </div>
+
+    <div class="form-group">
+        <label>Açıklama</label>
+        <input type="text" class="form-control" asp-for="Description" />
+    </div>
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+
+</form>

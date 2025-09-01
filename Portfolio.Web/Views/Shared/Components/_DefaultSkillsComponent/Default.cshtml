@@ -1,0 +1,109 @@
+﻿@model List<Portfolio.Web.Entities.Skill>
+
+<section id="skills" class="skills section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Yeteneklerim</h2>
+        <p></p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row skills-content skills-animation">
+            @if (Model != null && Model.Any())
+            {
+                int half = (int)Math.Ceiling(Model.Count / 2.0);
+                var leftColumn = Model.Take(half).ToList();
+                var rightColumn = Model.Skip(half).ToList();
+
+                <!-- Sol sütun -->
+                <div class="col-lg-6">
+                    @foreach (var skill in leftColumn)
+                    {
+                        var barClass = skill.Percentage <= 19 ? "bg-darkred" :
+                        skill.Percentage <= 39 ? "bg-danger" :
+                        skill.Percentage <= 59 ? "bg-orange" :
+                        skill.Percentage <= 79 ? "bg-warning" :
+                        skill.Percentage <= 89 ? "bg-lightgreen" :
+                        "bg-success";
+
+                        <div class="progress mb-3">
+                            <span class="skill">@skill.Title <i class="val">@skill.Percentage%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar @barClass" role="progressbar"
+                                     aria-valuenow="@skill.Percentage" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 0%;" data-percentage="@skill.Percentage"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- Sağ sütun -->
+                <div class="col-lg-6">
+                    @foreach (var skill in rightColumn)
+                    {
+                        var barClass = skill.Percentage <= 19 ? "bg-darkred" :
+                        skill.Percentage <= 39 ? "bg-danger" :
+                        skill.Percentage <= 59 ? "bg-orange" :
+                        skill.Percentage <= 79 ? "bg-warning" :
+                        skill.Percentage <= 89 ? "bg-lightgreen" :
+                        "bg-success";
+
+                        <div class="progress mb-3">
+                            <span class="skill">@skill.Title <i class="val">@skill.Percentage%</i></span>
+                            <div class="progress-bar-wrap">
+                                <div class="progress-bar @barClass" role="progressbar"
+                                     aria-valuenow="@skill.Percentage" aria-valuemin="0" aria-valuemax="100"
+                                     style="width: 0%;" data-percentage="@skill.Percentage"></div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="col-12">
+                    <p>Henüz yetenek bilgisi eklenmemiş.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const bars = document.querySelectorAll('.progress-bar');
+            bars.forEach(bar => {
+                let percent = bar.getAttribute('data-percentage');
+                setTimeout(() => { bar.style.width = percent + '%'; }, 200);
+            });
+        });
+    </script>
+}
+
+<style>
+    /* Yeni renk aralıkları */
+    .bg-darkred {
+        background-color: #8B0000 !important; /* koyu kırmızı */
+    }
+
+    .bg-orange {
+        background-color: #fd7e14 !important; /* turuncu */
+    }
+
+    .bg-lightgreen {
+        background-color: #90ee90 !important; /* açık yeşil */
+        color: #000 !important;
+    }
+
+    /* Gradient versiyonu → renkler %'e göre kırmızıdan yeşile */
+    .progress-bar[data-percentage]:not([class*="bg-"]) {
+        background: linear-gradient(90deg, red, orange, yellow, green);
+    }
+
+    /* Animasyon */
+    .progress-bar {
+        transition: width 1.5s ease-in-out;
+    }
+</style>

@@ -1,0 +1,44 @@
+﻿﻿@{
+Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_AdminLayoutHeadComponent")
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    @await Component.InvokeAsync("_AdminLayoutSidebarComponent")
+
+    @await Component.InvokeAsync("_AdminLayoutHeaderComponent")
+
+    @await Component.InvokeAsync("_AdminLayoutNavbarComponent")
+
+
+    <div class="pc-container">
+        <div class="pc-content">
+
+            @await Component.InvokeAsync("_AdminLayoutBreadcrumbComponent")
+
+
+            <!-- [ Main Content ] start -->
+            @RenderBody()
+
+        </div>
+    </div>
+
+
+    @await Component.InvokeAsync("_AdminLayoutFooterComponent")
+
+    @await Component.InvokeAsync("_AdminLayoutScriptsComponent")
+
+</body>
+</html>

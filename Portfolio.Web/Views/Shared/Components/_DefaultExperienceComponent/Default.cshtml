@@ -1,0 +1,18 @@
+﻿@model List<Experience>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+    @foreach (var item in Model)
+    {
+        <div class="resume-item">
+            <h4>@item.Title</h4>
+            <h5>@item.StartYear - @item.EndYear</h5>
+            <p><em>@item.Company - @item.City</em></p>
+            <ul>
+                <li>@item.Description</li>              
+            </ul>
+        </div>
+    
+        <!-- Edn Resume Item -->
+    }
+
+</div>

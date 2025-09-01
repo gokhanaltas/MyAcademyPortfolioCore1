@@ -1,0 +1,31 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Profil Güncelle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+<form method="post" asp-action="UpdateUser">
+    <input type="hidden" asp-for="UserId" />
+
+    <div class="form-group">
+        <label>Adınız</label>
+        <input asp-for="FirstName" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Soyadınız</label>
+        <input asp-for="LastName" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label>Kullanıcı Adı</label>
+        <input asp-for="Username" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary">Güncelle</button>
+
+    </form>

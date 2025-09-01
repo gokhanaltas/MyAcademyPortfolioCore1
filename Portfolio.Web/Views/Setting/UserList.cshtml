@@ -1,0 +1,63 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Kullanıcı Listesi";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<style>
+    /* Şifre Güncelle - Premium Mavi Gradient */
+    .btn-premium-info {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+    /* Profili Düzenle - Premium Yeşil Gradient */
+    .btn-premium-success {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #185a9d, #43cea2);
+        }
+</style>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Adınız</th>
+        <th>Soyadınız</th>
+        <th>Kullanıcı Adı</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Username</td>
+            <td>
+                <a href="/Setting/UserPassword/@item.UserId" class="btn btn-premium-info mb-1">Şifre Güncelle</a>
+                <a href="/Setting/UpdateUser/@item.UserId" class="btn btn-premium-success">Profili Düzenle</a>
+            </td>
+        </tr>
+    }
+</table>

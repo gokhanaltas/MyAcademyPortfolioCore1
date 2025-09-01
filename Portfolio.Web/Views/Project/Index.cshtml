@@ -1,0 +1,124 @@
+﻿@model List<Project>
+@{
+    ViewData["Title"] = "Projelerim";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<style>
+    /* Satır hover efekti */
+    table.table tbody tr {
+        transition: all 0.3s ease;
+    }
+
+        table.table tbody tr:hover {
+            background: linear-gradient(90deg, #f0f0f0, #e0e0e0);
+            transform: scale(1.01);
+        }
+
+    /* Sil Butonu - Premium Kırmızı Gradient */
+    .btn-premium-danger {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        }
+
+    /* Güncelle Butonu - Premium Mavi Gradient */
+    .btn-premium-info {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+    /* Yeni Proje Butonu */
+    .btn-new-project {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-new-project:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #185a9d, #43cea2);
+        }
+
+    /* Proje resimleri */
+    .project-img {
+        height: 75px;
+        width: 75px;
+        border-radius: 6px;
+        transition: transform 0.3s;
+    }
+
+        .project-img:hover {
+            transform: scale(1.1);
+        }
+</style>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Proje Resmi</th>
+        <th>Proje Adı</th>
+        <th>Açıklama</th>
+        <th>Github Url</th>
+        <th>Kategori</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td><img src="@item.ImageUrl" class="project-img" />  </td>
+            <td>@item.ProjectName</td>
+            <td>@item.Description</td>
+            <td><a href="@item.GithubUrl" target="_blank">Github Linki</a> </td>
+            <td>@item.Category.CategoryName</td>
+            <td>
+                <button onclick="deleteProject(@item.ProjectId)" class="btn btn-premium-danger mb-1">Sil</button>
+                <a href="/Project/UpdateProject/@item.ProjectId" class="btn btn-premium-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="/Project/CreateProject" class="btn btn-new-project mt-3">Yeni Proje Oluştur</a>
+
+<script>
+    function deleteProject(id){
+        Swal.fire({
+            title: "Silmek istediğinize emin misiniz?",
+            text: "Bu işlemi geri alamazsınız!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Evet, Sil!",
+            cancelButtonText: "İptal"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "/Project/DeleteProject/" + id;
+            }
+        });
+    }
+</script>

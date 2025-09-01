@@ -1,0 +1,17 @@
+﻿@model List<Education>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+    @foreach (var item in Model)
+    {
+
+
+        <div class="resume-item">
+            <h4>@item.SchoolName</h4>
+            <h5>@item.StartYear - @item.EndYear</h5>
+            <p><em>@item.Department</em></p>
+            <p>@item.Description</p>
+        </div>
+
+        <!-- Edn Resume Item -->
+    }
+</div>

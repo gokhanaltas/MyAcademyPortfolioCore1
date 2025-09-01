@@ -1,0 +1,81 @@
+﻿@model List<Banner>
+@{
+    ViewData["Title"] = "Öne Çıkan Alan";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<style>
+    /* Sil Butonu - Premium Kırmızı Gradient */
+    .btn-premium-danger {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        }
+
+    /* Güncelle Butonu - Premium Mavi Gradient */
+    .btn-premium-info {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+    /* Yeni Buton */
+    .btn-new-banner {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-new-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #185a9d, #43cea2);
+        }
+</style>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Resim Url</th>
+        <th>Ad Soyad</th>
+        <th>Başlık</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.CoverImageUrl</td>
+            <td>@item.NameSurname</td>
+            <td>@item.Title</td>
+            <td>
+                <a href="/Banner/DeleteBanner/@item.BannerId" class="btn btn-premium-danger mb-1">Sil</a>
+                <a href="/Banner/UpdateBanner/@item.BannerId" class="btn btn-premium-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<a href="/Banner/CreateBanner/" class="btn btn-new-banner mt-3">Yeni Ana Sayfa Oluştur</a>

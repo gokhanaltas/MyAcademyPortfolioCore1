@@ -1,0 +1,87 @@
+﻿@model List<Experience>
+@{
+    ViewData["Title"] = "Deneyim Bilgileri";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<style>
+    /* Sil Butonu - Premium Kırmızı Gradient */
+    .btn-premium-danger {
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+        }
+
+    /* Güncelle Butonu - Premium Mavi Gradient */
+    .btn-premium-info {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-premium-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+        }
+
+    /* Yeni Deneyim Bilgisi Butonu */
+    .btn-new-experience {
+        background: linear-gradient(135deg, #43cea2, #185a9d);
+        color: #fff;
+        border: none;
+        transition: 0.3s;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+        .btn-new-experience:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #185a9d, #43cea2);
+        }
+</style>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Başlık</th>
+        <th>Başlama Yılı</th>
+        <th>Bitiş Yılı</th>
+        <th>Şirket</th>
+        <th>Şehir</th>
+        <th>Açıklama</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Title</td>
+            <td>@item.StartYear</td>
+            <td>@item.EndYear</td>
+            <td>@item.Company</td>
+            <td>@item.City</td>
+            <td>@item.Description</td>
+            <td>
+                <a href="/Experience/DeleteExperience/@item.ExperienceId" class="btn btn-premium-danger mb-1">Sil</a>
+                <a href="/Experience/UpdateExperience/@item.ExperienceId" class="btn btn-premium-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<a href="/Experience/CreateExperience/" class="btn btn-new-experience mt-3">Yeni Deneyim Bilgisi Oluştur</a>
