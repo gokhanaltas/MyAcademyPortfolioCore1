@@ -1,29 +1,34 @@
-# ✨ My Portfolio Project - ASP.NET Core 9.0
+## ✨🖥️ MY PORTFOLIO PROJECT | ASP.NET Core 9.0 | 🌟
 
-## 🖥️ Proje Hakkında
-Bu proje, kişisel portföyümü **modern**, **dinamik** ve **yönetilebilir** bir yapıda sunmak için geliştirilmiştir.  
-Yönetici paneli ile içerikler güncellenebilir, ziyaretçiler mesaj gönderebilir ve projeler profesyonel bir şekilde sergilenebilir.  
+### 🔥 Proje Hakkında
+🌟 Kendi portföy içeriklerimi modern ve kullanıcı dostu bir şekilde sergileyebiliyorum.
+🌟 Admin paneli sayesinde içerikleri hızlı ve güvenli bir şekilde yönetebiliyorum.
+🌟 Ziyaretçiler mesaj gönderebilir ve öne çıkan projelerimi görüntüleyebilir.
+
+### 🚀 Kullanılan Teknolojiler
+
+| Simgesi | Teknoloji | Açıklama |
+|---------|-----------|---------|
+| ⚡ | ASP.NET Core 9.0 | Backend & Razor Pages Frontend |
+| 🗄 | Entity Framework Core | Veri yönetimi & LINQ ile dinamik veri çekimi |
+| 🎨 | HTML, CSS, Bootstrap | Modern ve responsive arayüz |
+| 🔐 | ASP.NET Core Identity | Güvenli admin paneli ve kullanıcı yönetimi |
+| 💾 | SQL Server | Veritabanı yönetimi |
 
 
-## 🛠️ Kullanılan Teknolojiler
-- **Backend:** ASP.NET Core 9.0, C#
-- **Frontend:** Razor Pages, HTML, CSS, Bootstrap
-- **Database:** SQL Server, Entity Framework Core, LINQ
+### 💎 Öne Çıkan Özellikler
 
-## 🌟 Özellikler
-- Admin paneli üzerinden CRUD işlemleri
-- Hakkımda, Eğitim, Deneyimler, Yetenekler, Referanslar ve Projeler modülleri
-- Ziyaretçi mesaj kaydı ve yönetimi
-- Yetenek seviyelerinin progress barlarla gösterimi
-- Responsive web tasarımı
+| ✅ Özellik | Açıklama |
+|-----------|---------|
+| Admin paneli üzerinden CRUD işlemleri | Admin paneli üzerinden içerik ekleme, güncelleme, silme ve listeleme işlemleri |
+| Modüller | Hakkımda, Eğitim, Deneyim, Yetenekler, Referanslar ve Projeler modülleri |
+| Dinamik veri yönetimi | Database entegrasyonu ile içeriklerin dinamik şekilde yönetimi |
+| Responsive tasarım | Modern ve responsive web tasarımı ile tüm cihazlara uyumlu arayüz |
+| Progress bar | Yetenek seviyelerini görsel olarak progress barlarla gösterme |
+| Ziyaretçi mesajları | Ziyaretçilerden gelen mesajların kaydı ve takibi |
 
-## 🎯 Kazanımlar
-- ASP.NET Core 9.0 ile full-stack geliştirme deneyimi  
-- Dinamik içerik yönetimi ve veritabanı entegrasyonu  
-- Modern & responsive UI geliştirme  
 
----
-### 📸 Fotoğraflar 
+# 📸 Resimler 
 <img width="1885" height="918" alt="Ekran görüntüsü 2025-08-31 164934" src="https://github.com/user-attachments/assets/c4af7c37-1985-4ec9-a165-55b4520818aa" />
 <img width="1889" height="921" alt="Ekran görüntüsü 2025-08-31 165000" src="https://github.com/user-attachments/assets/18793bc2-d3a8-47ea-85e1-f3126d30e78d" />
 <img width="1890" height="918" alt="Ekran görüntüsü 2025-08-31 165015" src="https://github.com/user-attachments/assets/9d798689-86f4-4773-9b29-f8705e78b6d5" />
